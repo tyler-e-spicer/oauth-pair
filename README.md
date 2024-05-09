@@ -64,6 +64,16 @@ In production, you have a single server serving everything.
 `/api/*` is the API endpoint.  
 `/*` is the client.
 
+## Todo list
+
+- [x] Refactor
+  - [ ] App.jsx - break it up (helpers vs components)
+  - [ ] remove deprecated react methods
+  - [ ] move hooks to hooks folder
+  - [ ] merge o-auth functionality with tylers beautiful login page
+  - [ ] Remove oauth-pair/client, reconcile oauth-pair/react-oauth-exp & oauth-pair/src
+- [ ] Create user flow
+
 ## Tests
 
 A test runner is not installed (right now). But ESLint and Prettier are checked on commit and pushed thanks to husky and lintstaged.
