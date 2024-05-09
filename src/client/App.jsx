@@ -11,43 +11,11 @@ import {
   AuthContextProvider,
 } from './providers/AuthContextProvider';
 
-import Dashboard from './components/Dashboard';
+// import Dashboard from './components/Dashboard';
+import Home from './components/Home';
 
 // Ensures cookie is sent
 axios.defaults.withCredentials = true;
-
-const Login = () => {
-  const handleLogin = async () => {
-    console.log('firing handle login');
-    try {
-      // Gets authentication url from backend server
-      const clientId = import.meta.env.GOOGLE_CLIENT_ID;
-      console.log('clientId: ', clientId);
-      const redirectURI = import.meta.env.REDIRECT_URL;
-      console.log('redirectURI: ', redirectURI);
-      const {
-        data: { url },
-      } = await axios.get(`${config.serverUrl}/auth/url`, {
-        params: {
-          client_id: clientId,
-          redirect_uri: redirectURI,
-        },
-      });
-      // Navigate to consent screen
-      window.location.assign(url);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  return (
-    <>
-      <h3>Login to Dashboard</h3>
-      <button className="btn" onClick={handleLogin}>
-        Login
-      </button>
-    </>
-  );
-};
 
 const Callback = () => {
   const called = useRef(false);
@@ -78,24 +46,6 @@ const Callback = () => {
   }, [checkLoginState, loggedIn, navigate]);
   return <></>;
 };
-
-const Home = () => {
-  const { loggedIn } = useContext(AuthContext);
-  if (loggedIn === true) return <Dashboard />;
-  if (loggedIn === false) return <Login />;
-  return <></>;
-};
-
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <Home />,
-//   },
-//   {
-//     path: '/auth/callback', // google will redirect here
-//     element: <Callback />,
-//   },
-// ])
 
 function App() {
   return (
