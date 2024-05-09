@@ -6,7 +6,7 @@
     "clean": "rimraf dist",
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
     "client:dev": "vite",
-    "server:dev": "nodemon src/app/standard-auth/server/server.js",
+    "server:dev": "nodemon src/server/server.js",
     "server:build": "babel --verbose --out-dir dist --only 'src/server.js,src/lib/' src",
     "client:build": "vite build",
     "build": "npm run server:build && npm run client:build",
