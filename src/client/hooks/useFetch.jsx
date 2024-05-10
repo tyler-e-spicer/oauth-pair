@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+// manages any fetch requests so we can keep components clean
+
 function useFetch() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
